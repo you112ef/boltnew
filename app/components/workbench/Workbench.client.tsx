@@ -109,14 +109,11 @@ export const Workbench = memo(({ chatStarted, isStreaming }: WorkspaceProps) => 
       >
         <div
           className={classNames(
-            'fixed top-[calc(var(--header-height)+1.5rem)] bottom-6 w-[var(--workbench-inner-width)] mr-4 z-0 transition-[left,width] duration-200 bolt-ease-cubic-bezier',
-            {
-              'left-[var(--workbench-left)]': showWorkbench,
-              'left-[100%]': !showWorkbench,
-            },
+            'relative w-full h-auto md:fixed md:top-[calc(var(--header-height)+1.5rem)] md:bottom-6 md:w-[var(--workbench-inner-width)] md:mr-4 z-0 transition-[left,width] duration-200 bolt-ease-cubic-bezier',
+            showWorkbench ? 'left-0 md:left-[var(--workbench-left)]' : 'left-[-100%] md:left-[100%]',
           )}
         >
-          <div className="absolute inset-0 px-6">
+          <div className="absolute inset-0 px-4 md:px-6"> {/* Adjusted padding */}
             <div className="h-full flex flex-col bg-bolt-elements-background-depth-2 border border-bolt-elements-borderColor shadow-sm rounded-lg overflow-hidden">
               <div className="flex items-center px-3 py-2 border-b border-bolt-elements-borderColor">
                 <Slider selected={selectedView} options={sliderOptions} setSelected={setSelectedView} />
